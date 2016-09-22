@@ -30,7 +30,7 @@ function Client(url){
     };
 
     this.sendText = function(message){
-      console.log('Client.sendText: '+message);
+      //console.log('Client.sendText: '+message);
         websocket.send(message);
     };
 

@@ -33,7 +33,7 @@ function getSidePaneTabContentsState(SidePaneTabContentsComponent)
 
 var SidePaneTabContents = React.createClass(
   {
-    propTypes: {
+    PropTypes: {
       key      : React.PropTypes.string.isRequired,
       tabObject: React.PropTypes.object
     },
