@@ -21,6 +21,7 @@ const Layout = props => {
   if (layoutDiv !== null) {
     layoutDiv.addEventListener('wheel', event => {
       if (event.deltaMode === event.DOM_DELTA_LINE) {
+        event.preventDefault();
         event.stopPropagation();
         const customScroll = new WheelEvent('wheel', {
           bubbles: event.bubbles,
@@ -32,6 +33,34 @@ const Layout = props => {
         });
         event.target.dispatchEvent(customScroll);
       }
+    });
+    layoutDiv.addEventListener('touchstart', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      const dummyElement = document.createElement('textarea');
+      dummyElement.value = `Poked! @ ${Object.keys(event).length}`;
+      dummyElement.setAttribute('readonly', '');
+      dummyElement.style.position = 'absolute';
+      dummyElement.style.left = `${event.pageX}px`;
+      dummyElement.style.top = `${event.pageY}px`;
+      document.body.appendChild(dummyElement);
+      const dummyMouse = new MouseEvent('click', {
+        screenX: event.pageX,
+        screenY: event.pageY,
+        bubbles: true,
+        button: 0,
+      });
+      event.target.dispatchEvent(dummyMouse);
+    });
+    layoutDiv.addEventListener('touchend', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      const dummyMouse = new MouseEvent('click', {
+        screenX: event.pageX,
+        screenY: event.pageY,
+        bubbles: true,
+      });
+      event.target.dispatchEvent(dummyMouse);
     });
   }
   return (
