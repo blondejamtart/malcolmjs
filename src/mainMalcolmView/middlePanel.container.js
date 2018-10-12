@@ -18,6 +18,7 @@ import AttributeAlarm, {
   AlarmStates,
 } from '../malcolmWidgets/attributeDetails/attributeAlarm/attributeAlarm.component';
 import blockUtils from '../malcolm/blockUtils';
+import ConnectedDiv from './connectedDiv';
 
 import navigationActions from '../malcolm/actions/navigation.actions';
 import LayoutBin from '../layout/layoutBin.component';
@@ -269,7 +270,7 @@ const findAttributeComponent = props => {
         </div>
       );
     default:
-      return <div className={props.classes.plainBackground} />;
+      return <ConnectedDiv className={props.classes.plainBackground} attribute={props.mainAttribute} block={props.parentBlock} />;
   }
 };
 
