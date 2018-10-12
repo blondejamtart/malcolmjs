@@ -270,7 +270,13 @@ const findAttributeComponent = props => {
         </div>
       );
     default:
-      return <ConnectedDiv className={props.classes.plainBackground} attribute={props.mainAttribute} block={props.parentBlock} />;
+      return (
+        <ConnectedDiv
+          className={props.classes.plainBackground}
+          attribute={props.mainAttribute}
+          block={props.parentBlock}
+        />
+      );
   }
 };
 
